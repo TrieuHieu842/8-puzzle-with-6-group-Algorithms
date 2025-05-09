@@ -72,12 +72,12 @@ Biểu đồ so sánh khi chạy thuật toán:
 ![image](https://github.com/user-attachments/assets/fa27b310-46ce-4969-9e33-b9d3a6d8402d)
 
 **Nhận xét**
-+ Simple Hill Climbing (Simple Hill Climbing): Thuật toán đơn giản, chỉ đi theo hướng tăng mà không lùi, nên có thể nhanh chóng bị kẹt ở cực trị địa phương. Hiệu suất tốt nhưng khả năng tìm lời giải toàn cục thấp.
-+ Steepest Ascent Hill Climbing (Steepest Hill Climbing): So với Simple Hill Climbing, Steepest Hill Climbing đánh giá tất cả các hàng xóm để chọn hướng tốt nhất, nhưng vẫn dễ bị kẹt ở cực trị. Cải tiến hơn Simple nhưng chưa đủ.
-+ Stochastic Hill Climbing (Stochastic Hill Climbing): Chọn ngẫu nhiên các bước tăng tốt, nên có thể thoát khỏi một số cực trị địa phương so với Hill Climbing truyền thống, tối ưu hơn.
-+ Simulated Annealing: Cho phép chấp nhận lời giải kém hơn với xác suất giảm dần, từ đó tránh được cực trị địa phương tốt hơn Hill Climbing. Chậm hơn nhưng chính xác hơn.
-+ Beam Stochastic: Duy trì nhiều trạng thái đồng thời và chọn hướng đi tốt nhất, nên có khả năng khám phá không gian rộng hơn Hill Climbing. Cân bằng giữa hiệu suất và tối ưu.
-+ Genetic Algorithm: Dựa vào quần thể, lai ghép, đột biến nên mất thời gian và bộ nhớ hơn nhưng tăng khả năng tìm lời giải toàn cục. Mặc dù chậm và tốn tài nguyên nhưng rất tối ưu.
++ Leo đồi đơn giản (Simple Hill Climbing): Thuật toán đơn giản, chỉ đi theo hướng tăng mà không lùi, nên có thể nhanh chóng bị kẹt ở cực trị địa phương. Hiệu suất tốt nhưng khả năng tìm lời giải toàn cục thấp.
++ Leo đồi dốc nhất (Steepest Hill Climbing): So với Simple Hill Climbing, Steepest Hill Climbing đánh giá tất cả các hàng xóm để chọn hướng tốt nhất, nhưng vẫn dễ bị kẹt ở cực trị. Cải tiến hơn Simple nhưng chưa đủ.
++ Leo đồi ngẫu nhiên (Stochastic Hill Climbing): Chọn ngẫu nhiên các bước tăng tốt, nên có thể thoát khỏi một số cực trị địa phương so với Hill Climbing truyền thống, tối ưu hơn.
++ Luyện thép mô phỏng (Simulated Annealing): Cho phép chấp nhận lời giải kém hơn với xác suất giảm dần, từ đó tránh được cực trị địa phương tốt hơn Hill Climbing. Chậm hơn nhưng chính xác hơn.
++ Tìm kiếm Chùm tia Cục bộ (Local Beam Search): Duy trì nhiều trạng thái đồng thời và chọn hướng đi tốt nhất, nên có khả năng khám phá không gian rộng hơn Hill Climbing. Cân bằng giữa hiệu suất và tối ưu.
++ Thuật toán Di truyền (Genetic Algorithm): Dựa vào quần thể, lai ghép, đột biến nên mất thời gian và bộ nhớ hơn nhưng tăng khả năng tìm lời giải toàn cục. Mặc dù chậm và tốn tài nguyên nhưng rất tối ưu.
 
 **Như vậy, các thuật toán tìm kiếm cục bộ (Local Search) đều có ưu và nhược điểm riêng: những thuật toán như Hill Climbing có thời gian thực hiện rất nhanh nhưng dễ mắc kẹt tại cực trị địa phương, trong khi các thuật toán như Genetic Algorithm, Beam Stochastic, Simulated Annealing tốn nhiều thời gian và không gian hơn nhưng lại có khả năng tìm ra lời giải tối ưu cao hơn.**
 
