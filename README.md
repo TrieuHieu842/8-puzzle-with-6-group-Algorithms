@@ -18,6 +18,10 @@
   - Chi phí đường đi (Path Cost): Tổng chi phí của các bước đi từ trạng thái ban đầu đến trạng thái hiện tại.
   - Giải pháp (Solution): Một chuỗi các hành động (LRUD...) để giải bài toán từ trạng thái ban đầu đến trạng thái đích. 
 # 2.1.  Tìm kiếm không có thông tin (Uniformed Search)
+- Không gian trạng thái (State Space): Tập hợp tất cả trạng thái có thể sinh ra từ khởi đầu.
+- Trạng thái khởi đầu (Initial State): Ở bài toán này sẽ là bảng 8-puzzle [4, 1, 3], [7, 2, 5], [0, 8, 6].
+- Trạng thái đích (Goal State): Ở bài toán này sẽ là [1, 2, 3], [4, 5, 6], [7, 8, 0].
+
 Minh họa:
 ![UNFS_2](https://github.com/user-attachments/assets/13c3a781-a9a5-457c-afcd-56030fd57107)
 Biểu đồ so sánh khi chạy thuật toán:
@@ -32,6 +36,12 @@ Biểu đồ so sánh khi chạy thuật toán:
   
 **Như vậy, các thuật toán BFS, UCS, IDS trong nhóm thuật toán này tối ưu hơn DFS**
 # 2.2. Tìm kiếm có thông tin (Informed Search)
+- Không gian trạng thái (State Space): Tập hợp tất cả trạng thái có thể sinh ra từ khởi đầu.
+- Trạng thái khởi đầu (Initial State): Ở bài toán này sẽ là bảng 8-puzzle [4, 1, 3], [7, 2, 5], [0, 8, 6].
+- Trạng thái đích (Goal State): Ở bài toán này sẽ là [1, 2, 3], [4, 5, 6], [7, 8, 0].
+- Hàm chi phí thực (g(n)): Chi phí từ nút gốc tới n.
+- Hàm đánh giá (heuristic h(n)): Ước lượng chi phí từ n tới đích.
+
 Minh họa: 
 ![ISS_1](https://github.com/user-attachments/assets/e5157cda-779a-4471-84a5-0121011a7381)
 Biểu đồ so sánh khi chạy thuật toán:
@@ -45,6 +55,13 @@ Biểu đồ so sánh khi chạy thuật toán:
 
 **Như vậy, các thuật toán trong nhóm thuật toán này đều có ưu điểm và nhược điểm, nếu như tìm kiếm thời gian nhanh thì không gian trạng thái lại nhiều (GBFS), tìm kiếm thời gian chậm thì không gian lại ít (IDA) và A-Star cân bằng tốt cả hai.**
 # 2.3. Tìm kiếm cục bộ (Local Search)
+- Trạng thái khởi đầu (Initial State): Ở bài toán này là bảng 8-puzzle [1, 2, 3], [4, 0, 6], [7, 5, 8].
+- Trạng thái đích (Goal State): Ở bài toán này sẽ là [1, 2, 3], [4, 5, 6], [7, 8, 0].
+- Láng giềng (Neighbors): Tập các trạng thái sinh ra từ trạng thái hiện tại.
+- Hàm đánh giá (Objective/Evaluation Function): Giá trị số mô tả chất lượng trạng thái.
+- Chiến lược cập nhật: Quy tắc chọn trạng thái tiếp theo (vd. xác suất, số lượng beam, phép lai/đột biến).
+- Điều kiện dừng: Số vòng lặp tối đa, không cải thiện, đạt ngưỡng chất lượng.
+
 Minh họa: 
 
 ![LCL_1111](https://github.com/user-attachments/assets/deb75fd5-d951-472e-8d73-c776397a70ba)
