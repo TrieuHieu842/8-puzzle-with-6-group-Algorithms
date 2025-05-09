@@ -81,8 +81,39 @@ Biểu đồ so sánh khi chạy thuật toán:
 
 **Như vậy, các thuật toán tìm kiếm cục bộ (Local Search) đều có ưu và nhược điểm riêng: những thuật toán như Hill Climbing có thời gian thực hiện rất nhanh nhưng dễ mắc kẹt tại cực trị địa phương, trong khi các thuật toán như Genetic Algorithm, Beam Stochastic, Simulated Annealing tốn nhiều thời gian và không gian hơn nhưng lại có khả năng tìm ra lời giải tối ưu cao hơn.**
 
+# 2.4. Các Thuật Toán Cho Môi Trường Phức Tạp (Complex Environments)
+  Trong môi trường phức tạp, tác tử không thể quan sát toàn bộ môi trường hoặc không biết chính xác trạng thái hiện tại. Những thuật toán này không trực tiếp tối ưu cho bài toán 8-Puzzle truyền thống (vì bài toán này có thông tin đầy đủ), nhưng có thể mở rộng hoặc áp dụng nếu bài toán 8-Puzzle bị giới hạn thông tin.
   
+Minh họa:
 
+
+Biểu đồ so sánh khi chạy thuật toán:
+
+**Nhận xét**
++ AND-OR Graph Search: Dùng để giải bài toán có nhiều kết quả phụ thuộc lẫn nhau. Với bài toán 8-Puzzle, khi áp dụng vào phiên bản có các ràng buộc phức tạp hoặc nhiều mục tiêu song song thì thuật toán này trở nên cần thiết.
++ Searching with Partial Observation: Giả sử tác tử không biết rõ trạng thái hiện tại của bảng, cần phải dự đoán hoặc cập nhật trạng thái theo quan sát gián tiếp.
++ Tìm kiếm không cảm biến (Sensorless Problem Solving): Tác tử không có cảm biến để xác định trạng thái, nên phải giữ tập hợp các trạng thái có thể xảy ra (Belief State), rồi giảm dần bằng hành động.
+# 2.5. Bài Toán Thỏa Mãn Ràng Buộc (Constraint Satisfaction Problems - CSPs)
+Mô hình CSP:
+- Biến (Variables): Mỗi ô trong ma trận 3x3 là một biến.
+- Miền giá trị (Domains): Tập các số từ 0 đến 8.
+- Ràng buộc (Constraints): Mỗi số chỉ xuất hiện một lần trong ma trận (tất cả khác nhau - AllDifferent constraint). Các ràng buộc về quy tắc di chuyển giữa các trạng thái.
+Minh họa:
+
+
+
+Biểu đồ so sánh khi chạy thuật toán:
+**Nhận xét**
+- Backtracking Search: Duyệt tuần tự qua các biến và giá trị. Có thể dùng để kiểm tra lời giải hoặc sinh trạng thái.
+- Forward Checking: Loại bỏ các giá trị không hợp lệ khỏi miền sau khi gán, giúp giảm số trạng thái cần duyệt.
+- Min-Conflicts Heuristic: Giải pháp cục bộ cho CSP lớn, chọn cách gán ít gây xung đột nhất — hữu ích khi cải thiện trạng thái hiện tại của bài toán.
+# 2.6. Học Tăng Cường (Reinforcement Learning - RL)
+Minh họa:
+
+
+
+Biểu đồ so sánh khi chạy thuật toán:
+**Nhận xét**
   
 
 
