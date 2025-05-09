@@ -55,6 +55,7 @@ Biểu đồ so sánh khi chạy thuật toán:
 
 **Như vậy, các thuật toán trong nhóm thuật toán này đều có ưu điểm và nhược điểm, nếu như tìm kiếm thời gian nhanh thì không gian trạng thái lại nhiều (GBFS), tìm kiếm thời gian chậm thì không gian lại ít (IDA) và A-Star cân bằng tốt cả hai.**
 # 2.3. Tìm kiếm cục bộ (Local Search)
+- Không gian trạng thái (State Space): Tập hợp tất cả trạng thái có thể sinh ra từ khởi đầu.
 - Trạng thái khởi đầu (Initial State): Ở bài toán này là bảng 8-puzzle [1, 2, 3], [4, 0, 6], [7, 5, 8].
 - Trạng thái đích (Goal State): Ở bài toán này sẽ là [1, 2, 3], [4, 5, 6], [7, 8, 0].
 - Láng giềng (Neighbors): Tập các trạng thái sinh ra từ trạng thái hiện tại.
