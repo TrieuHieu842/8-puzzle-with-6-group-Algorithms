@@ -26,8 +26,8 @@ Biểu đồ so sánh khi chạy thuật toán:
   
 **Nhận xét:**
 + Tìm kiếm theo chiều rộng (BFS - Breadth-First Search): Thời gian thực hiện và không gian trạng thái tương đối nhỏ bởi vì thuật toán này tìm kiếm theo lớp, đảm bảo tìm kiếm được lời giải tối ưu nhưng thường tốn bộ nhớ lớn.
-+ Tìm kiếm theo chiều sâu (DFS - Dept-First Search): Thời gian thực hiện và không gian trạng thái lớn, vượt trội so với các thuật toán khác bởi vì DFS ưu tiên đi sâu theo nhánh nên dễ rơi vào vòng lặp hoặc đi sai hướng và khám phá các trạng thái không cần thiết.
-+ Tìm kiếm theo chi phí đồng đều (UCS - Uniform Cost Search): UCS tương tự BFS nhưng có thêm chi phí đường đi, nếu chi phí đường đi giữa các trạng thái là đồng đều thì sẽ xử lí theo BFS.
++ Tìm kiếm theo chiều sâu (DFS - Depth-First Search): Thời gian thực hiện và không gian trạng thái lớn, vượt trội so với các thuật toán khác bởi vì DFS ưu tiên đi sâu theo nhánh nên dễ rơi vào vòng lặp hoặc đi sai hướng và khám phá các trạng thái không cần thiết.
++ Tìm kiếm theo chi phí đồng đều (UCS - Uniform Cost Search): UCS tương tự BFS nhưng có thêm chi phí đường đi, nếu chi phí giữa các trạng thái bằng nhau, UCS sẽ hoạt động tương tự như BFS.
 + Tìm kiếm lặp sâu dần (IDS - Iterative Deepening Search): IDS là sự kết hợp của BFS và DFS nhằm tiết kiệm bộ nhớ và tìm được lời giải tối ưu.
   
 **Như vậy, các thuật toán BFS, UCS, IDS trong nhóm thuật toán này tối ưu hơn DFS**
