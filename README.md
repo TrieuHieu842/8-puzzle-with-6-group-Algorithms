@@ -103,6 +103,8 @@ Minh họa:
 
 
 Biểu đồ so sánh khi chạy thuật toán:
+
+  
 **Nhận xét**
 - Backtracking Search: Duyệt tuần tự qua các biến và giá trị. Có thể dùng để kiểm tra lời giải hoặc sinh trạng thái.
 - Forward Checking: Loại bỏ các giá trị không hợp lệ khỏi miền sau khi gán, giúp giảm số trạng thái cần duyệt.
@@ -113,7 +115,10 @@ Minh họa:
 
 
 Biểu đồ so sánh khi chạy thuật toán:
-**Nhận xét**
+
   
+**Nhận xét**
++ Ưu điểm: Tác tử có thể học mà không cần biết rõ thuật toán giải — học từ kinh nghiệm.
++ Nhược điểm: Cần huấn luyện qua nhiều lần chơi thử (episodes), tốn thời gian. Không đảm bảo tìm lời giải tối ưu ngay.
 
 
