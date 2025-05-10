@@ -90,6 +90,7 @@ Minh họa:
 Biểu đồ so sánh khi chạy thuật toán:
 
 ![image](https://github.com/user-attachments/assets/0073c541-23d3-41e3-a09d-7282a7b8c5f6)
+  
 **Nhận xét**
 + Sensorless: Mặc dù khám phá số lượng trạng thái trung bình (~80 trạng thái), nhưng thời gian thực hiện lại cao nhất (~45 giây). Điều này cho thấy mỗi trạng thái tốn nhiều thời gian xử lý do thiếu thông tin cảm biến, dẫn đến việc thuật toán phải thử nhiều hướng mà không có chỉ dẫn rõ ràng.
 + AND-OR DFS: Khám phá nhiều trạng thái nhất (~120 trạng thái), cho thấy khả năng bao phủ không gian trạng thái tốt. Tuy nhiên, biểu đồ thời gian không thể hiện rõ (có thể rất nhỏ hoặc bị lỗi khi ghi nhận). DFS thường có xu hướng duyệt sâu, nên dễ lặp lại hoặc đi sai hướng nếu không có ràng buộc kiểm tra vòng lặp.
@@ -106,6 +107,7 @@ Minh họa:
 
 
 Biểu đồ so sánh khi chạy thuật toán:
+
 
   
 **Nhận xét**
