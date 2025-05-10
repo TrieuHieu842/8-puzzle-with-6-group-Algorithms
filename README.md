@@ -85,14 +85,17 @@ Biểu đồ so sánh khi chạy thuật toán:
   Trong môi trường phức tạp, tác tử không thể quan sát toàn bộ môi trường hoặc không biết chính xác trạng thái hiện tại. Những thuật toán này không trực tiếp tối ưu cho bài toán 8-Puzzle truyền thống (vì bài toán này có thông tin đầy đủ), nhưng có thể mở rộng hoặc áp dụng nếu bài toán 8-Puzzle bị giới hạn thông tin.
   
 Minh họa:
-
+![CE](https://github.com/user-attachments/assets/10c23c80-f365-4c13-a7b4-20fc0dd7ccea)
 
 Biểu đồ so sánh khi chạy thuật toán:
 
+![image](https://github.com/user-attachments/assets/0073c541-23d3-41e3-a09d-7282a7b8c5f6)
 **Nhận xét**
-+ AND-OR Graph Search: Dùng để giải bài toán có nhiều kết quả phụ thuộc lẫn nhau. Với bài toán 8-Puzzle, khi áp dụng vào phiên bản có các ràng buộc phức tạp hoặc nhiều mục tiêu song song thì thuật toán này trở nên cần thiết.
-+ Searching with Partial Observation: Giả sử tác tử không biết rõ trạng thái hiện tại của bảng, cần phải dự đoán hoặc cập nhật trạng thái theo quan sát gián tiếp.
-+ Tìm kiếm không cảm biến (Sensorless Problem Solving): Tác tử không có cảm biến để xác định trạng thái, nên phải giữ tập hợp các trạng thái có thể xảy ra (Belief State), rồi giảm dần bằng hành động.
++ Sensorless: Mặc dù khám phá số lượng trạng thái trung bình (~80 trạng thái), nhưng thời gian thực hiện lại cao nhất (~45 giây). Điều này cho thấy mỗi trạng thái tốn nhiều thời gian xử lý do thiếu thông tin cảm biến, dẫn đến việc thuật toán phải thử nhiều hướng mà không có chỉ dẫn rõ ràng.
++ AND-OR DFS: Khám phá nhiều trạng thái nhất (~120 trạng thái), cho thấy khả năng bao phủ không gian trạng thái tốt. Tuy nhiên, biểu đồ thời gian không thể hiện rõ (có thể rất nhỏ hoặc bị lỗi khi ghi nhận). DFS thường có xu hướng duyệt sâu, nên dễ lặp lại hoặc đi sai hướng nếu không có ràng buộc kiểm tra vòng lặp.
++ Partially Observable: Có số lượng trạng thái khám phá ít nhất (~20 trạng thái) và thời gian thực hiện nhanh nhất (~7 giây). Điều này cho thấy thuật toán được tối ưu tốt, chỉ chọn lọc trạng thái cần thiết để khám phá. Mặc dù không quan sát toàn bộ môi trường, nhưng vẫn đạt được hiệu quả cao.
+
+**Như vậy, các phương pháp giải quyết bài toán tìm kiếm đều có ưu và nhược điểm riêng: Sensorless cho thấy khả năng xử lý yếu khi thiếu thông tin – thời gian thực hiện lâu, ít hiệu quả. AND-OR DFS có khả năng khám phá toàn diện nhưng có thể chưa tối ưu về thời gian hoặc bộ nhớ. Partially Observable tuy bị giới hạn về thông tin đầu vào nhưng lại thể hiện tốt nhờ thuật toán tối ưu – khám phá ít trạng thái và thực hiện nhanh.**
 # 2.5. Bài Toán Thỏa Mãn Ràng Buộc (Constraint Satisfaction Problems - CSPs)
 Mô hình CSP:
 - Biến (Variables): Mỗi ô trong ma trận 3x3 là một biến.
