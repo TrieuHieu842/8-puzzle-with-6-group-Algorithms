@@ -35,7 +35,7 @@ Biểu đồ so sánh khi chạy thuật toán:
 + Tìm kiếm lặp sâu dần (IDS - Iterative Deepening Search): IDS là sự kết hợp của BFS và DFS nhằm tiết kiệm bộ nhớ và tìm được lời giải tối ưu.
   
 **Như vậy, các thuật toán BFS, UCS, IDS trong nhóm thuật toán này tối ưu hơn DFS**
-# 2.2. Tìm kiếm có thông tin (Informed Search)
+## 2.2. Tìm kiếm có thông tin (Informed Search)
 - Không gian trạng thái (State Space): Tập hợp tất cả trạng thái có thể sinh ra từ khởi đầu.
 - Trạng thái khởi đầu (Initial State): Ở bài toán này sẽ là bảng 8-puzzle [4, 1, 3], [7, 2, 5], [0, 8, 6].
 - Trạng thái đích (Goal State): Ở bài toán này sẽ là [1, 2, 3], [4, 5, 6], [7, 8, 0].
@@ -54,7 +54,7 @@ Biểu đồ so sánh khi chạy thuật toán:
 + Tìm kiếm lặp sâu theo heuristic (IDA - Iterative Deepening A): IDA* kết hợp giữa A* và IDS, hoạt động theo ngưỡng (threshold) và tái sử dụng DFS có kiểm soát. Tuy thực hiện nhiều lần nhưng mỗi lần dùng ít bộ nhớ.
 
 **Như vậy, các thuật toán trong nhóm thuật toán này đều có ưu điểm và nhược điểm, nếu như tìm kiếm thời gian nhanh thì không gian trạng thái lại nhiều (GBFS), tìm kiếm thời gian chậm thì không gian lại ít (IDA) và A-Star cân bằng tốt cả hai.**
-# 2.3. Tìm kiếm cục bộ (Local Search)
+## 2.3. Tìm kiếm cục bộ (Local Search)
 - Không gian trạng thái (State Space): Tập hợp tất cả trạng thái có thể sinh ra từ khởi đầu.
 - Trạng thái khởi đầu (Initial State): Ở bài toán này là bảng 8-puzzle [1, 2, 3], [4, 0, 6], [7, 5, 8].
 - Trạng thái đích (Goal State): Ở bài toán này sẽ là [1, 2, 3], [4, 5, 6], [7, 8, 0].
@@ -81,7 +81,7 @@ Biểu đồ so sánh khi chạy thuật toán:
 
 **Như vậy, các thuật toán tìm kiếm cục bộ (Local Search) đều có ưu và nhược điểm riêng: những thuật toán như Hill Climbing có thời gian thực hiện rất nhanh nhưng dễ mắc kẹt tại cực trị địa phương, trong khi các thuật toán như Genetic Algorithm, Beam Stochastic, Simulated Annealing tốn nhiều thời gian và không gian hơn nhưng lại có khả năng tìm ra lời giải tối ưu cao hơn.**
 
-# 2.4. Các Thuật Toán Cho Môi Trường Phức Tạp (Complex Environments)
+## 2.4. Các Thuật Toán Cho Môi Trường Phức Tạp (Complex Environments)
   Trong môi trường phức tạp, tác tử không thể quan sát toàn bộ môi trường hoặc không biết chính xác trạng thái hiện tại. Những thuật toán này không trực tiếp tối ưu cho bài toán 8-Puzzle truyền thống (vì bài toán này có thông tin đầy đủ), nhưng có thể mở rộng hoặc áp dụng nếu bài toán 8-Puzzle bị giới hạn thông tin.
   
 Minh họa:
@@ -97,7 +97,7 @@ Biểu đồ so sánh khi chạy thuật toán:
 + Partially Observable: Có số lượng trạng thái khám phá ít nhất (~20 trạng thái) và thời gian thực hiện nhanh nhất (~7 giây). Điều này cho thấy thuật toán được tối ưu tốt, chỉ chọn lọc trạng thái cần thiết để khám phá. Mặc dù không quan sát toàn bộ môi trường, nhưng vẫn đạt được hiệu quả cao.
 
 **Như vậy, các phương pháp giải quyết bài toán tìm kiếm đều có ưu và nhược điểm riêng: Sensorless cho thấy khả năng xử lý yếu khi thiếu thông tin – thời gian thực hiện lâu, ít hiệu quả. AND-OR DFS có khả năng khám phá toàn diện nhưng có thể chưa tối ưu về thời gian hoặc bộ nhớ. Partially Observable tuy bị giới hạn về thông tin đầu vào nhưng lại thể hiện tốt nhờ thuật toán tối ưu – khám phá ít trạng thái và thực hiện nhanh.**
-# 2.5. Bài Toán Thỏa Mãn Ràng Buộc (Constraint Satisfaction Problems - CSPs)
+## 2.5. Bài Toán Thỏa Mãn Ràng Buộc (Constraint Satisfaction Problems - CSPs)
 Mô hình CSP:
 - Biến (Variables): Mỗi ô trong ma trận 3x3 là một biến.
 - Miền giá trị (Domains): Tập các số từ 0 đến 8.
@@ -122,7 +122,7 @@ Biểu đồ so sánh khi chạy thuật toán:
 Backtracking đơn giản, dễ triển khai, có thể nhanh trên bài toán nhỏ nhưng không hiệu quả trong không gian lớn. Forward Checking tuy có chi phí kiểm tra bổ sung nhưng giúp tiết kiệm không gian tìm kiếm và đặc biệt hiệu quả khi xử lý các bài toán CSP phức tạp với nhiều ràng buộc.**
 
   
-# 2.6. Học Tăng Cường (Reinforcement Learning - RL)
+## 2.6. Học Tăng Cường (Reinforcement Learning - RL)
 Minh họa:
 ![q_learning](https://github.com/user-attachments/assets/60baea94-7f0e-49f1-916f-f45fdea34a2d)
 Biểu đồ so sánh khi chạy thuật toán:
