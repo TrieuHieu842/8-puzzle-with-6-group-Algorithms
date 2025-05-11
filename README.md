@@ -160,7 +160,13 @@ Biểu đồ so sánh khi chạy thuật toán:
 #
 #
 #
+#
+#
 
+#
+#
+#
+#
 #
 #
 #
