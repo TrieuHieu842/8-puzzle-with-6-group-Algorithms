@@ -6,7 +6,7 @@
   - Tìm kiếm có thông tin (Informed Search): Gồm có các thuật toán GBFS, A*, IDA*.
   - Tìm kiếm cục bộ (Local Search): Gồm có các thuật toán Simulated Annealing, Beam Search, Genetic Algorithm và nhóm thuật toán Hill Climbing: Simple, Steepest, Stochastic
   - Tìm kiếm trong môi trường phức tạp (Searching in Complex Environments): Gồm có các thuật toán AND-OR Graph Search, Searching for a partially observation, Sensorless.
-  - Bài toán thỏa mãn ràng buộc (Constraint Satisfaction Problems - CSPs): Gồm có các thuật toán Min-conflicts search, Forward-Checking, Backtracking.
+  - Bài toán thỏa mãn ràng buộc (Constraint Satisfaction Problems - CSPs): Gồm có các thuật toán Forward-Checking, Backtracking.
   - Học tăng cường (Reinforcement Learning - RL): Gồm có thuật toán Q-Learning.
 # 2. Nội dung
   Một bài toán tìm kiếm 8-Puzzle thường có các thành phần chính:
@@ -110,14 +110,14 @@ Minh họa:
 
 Biểu đồ so sánh khi chạy thuật toán:
 
-
-  
+![comparison](https://github.com/user-attachments/assets/f017e94e-baae-4b40-84e1-1be1d14daf99)
+    
 **Nhận xét**
 - Backtracking Search: Duyệt tuần tự qua các biến và giá trị. Có thể dùng để kiểm tra lời giải hoặc sinh trạng thái.
 - Forward Checking: Loại bỏ các giá trị không hợp lệ khỏi miền sau khi gán, giúp giảm số trạng thái cần duyệt.
-- Min-Conflicts Heuristic: Giải pháp cục bộ cho CSP lớn, chọn cách gán ít gây xung đột nhất — hữu ích khi cải thiện trạng thái hiện tại của bài toán.
 # 2.6. Học Tăng Cường (Reinforcement Learning - RL)
 Minh họa:
+![q_learning](https://github.com/user-attachments/assets/60baea94-7f0e-49f1-916f-f45fdea34a2d)
 
 
 
