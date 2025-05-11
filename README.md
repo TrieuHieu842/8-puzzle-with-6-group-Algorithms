@@ -139,8 +139,13 @@ Biểu đồ so sánh khi chạy thuật toán:
 #
 #
 #
-#
 
+#
+#
+#
+#
+# -------------------------------------------
+SVTH: TRIEU PHUC HIEU
 
 
 
