@@ -93,7 +93,7 @@ Biểu đồ so sánh khi chạy thuật toán:
   
 **Nhận xét**
 + Sensorless: Mặc dù khám phá số lượng trạng thái trung bình (~80 trạng thái), nhưng thời gian thực hiện lại cao nhất (~45 giây). Điều này cho thấy mỗi trạng thái tốn nhiều thời gian xử lý do thiếu thông tin cảm biến, dẫn đến việc thuật toán phải thử nhiều hướng mà không có chỉ dẫn rõ ràng.
-+ AND-OR DFS: Khám phá nhiều trạng thái nhất (~120 trạng thái), cho thấy khả năng bao phủ không gian trạng thái tốt. Tuy nhiên, biểu đồ thời gian không thể hiện rõ (có thể rất nhỏ hoặc bị lỗi khi ghi nhận). DFS thường có xu hướng duyệt sâu, nên dễ lặp lại hoặc đi sai hướng nếu không có ràng buộc kiểm tra vòng lặp.
++ AND-OR DFS: Khám phá nhiều trạng thái nhất (~120 trạng thái), cho thấy khả năng bao phủ không gian trạng thái tốt. Biểu đồ thời gian hiển thị 0s (~0.08s) nhanh nhất trong nhóm thuật toán.
 + Partially Observable: Có số lượng trạng thái khám phá ít nhất (~20 trạng thái) và thời gian thực hiện nhanh nhất (~7 giây). Điều này cho thấy thuật toán được tối ưu tốt, chỉ chọn lọc trạng thái cần thiết để khám phá. Mặc dù không quan sát toàn bộ môi trường, nhưng vẫn đạt được hiệu quả cao.
 
 **Như vậy, các phương pháp giải quyết bài toán tìm kiếm đều có ưu và nhược điểm riêng: Sensorless cho thấy khả năng xử lý yếu khi thiếu thông tin – thời gian thực hiện lâu, ít hiệu quả. AND-OR DFS có khả năng khám phá toàn diện nhưng có thể chưa tối ưu về thời gian hoặc bộ nhớ. Partially Observable tuy bị giới hạn về thông tin đầu vào nhưng lại thể hiện tốt nhờ thuật toán tối ưu – khám phá ít trạng thái và thực hiện nhanh.**
