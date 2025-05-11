@@ -102,9 +102,11 @@ Mô hình CSP:
 - Biến (Variables): Mỗi ô trong ma trận 3x3 là một biến.
 - Miền giá trị (Domains): Tập các số từ 0 đến 8.
 - Ràng buộc (Constraints): Mỗi số chỉ xuất hiện một lần trong ma trận (tất cả khác nhau - AllDifferent constraint). Các ràng buộc về quy tắc di chuyển giữa các trạng thái.
-Minh họa:
 
 
+Minh họa: 
+  
+![CSPs](https://github.com/user-attachments/assets/c344d124-9ee6-4fd1-bfe5-5b5f7958f897)
 
 Biểu đồ so sánh khi chạy thuật toán:
 
