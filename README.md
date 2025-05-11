@@ -118,10 +118,10 @@ Biểu đồ so sánh khi chạy thuật toán:
 # 2.6. Học Tăng Cường (Reinforcement Learning - RL)
 Minh họa:
 ![q_learning](https://github.com/user-attachments/assets/60baea94-7f0e-49f1-916f-f45fdea34a2d)
-
-
-
 Biểu đồ so sánh khi chạy thuật toán:
+  
+![comparison](https://github.com/user-attachments/assets/a1f69e2c-c37e-4a19-bc66-660c7e22d202)
+
 
   
 **Nhận xét**
