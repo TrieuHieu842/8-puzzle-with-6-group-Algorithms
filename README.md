@@ -17,7 +17,7 @@
   - Kiểm tra đích (Goal Test): Kiểm tra xem trạng thái đang xét có phải trạng thái đích hay chưa.
   - Chi phí đường đi (Path Cost): Tổng chi phí của các bước đi từ trạng thái ban đầu đến trạng thái hiện tại.
   - Giải pháp (Solution): Một chuỗi các hành động (LRUD...) để giải bài toán từ trạng thái ban đầu đến trạng thái đích. 
-# 2.1.  Tìm kiếm không có thông tin (Uniformed Search)
+## 2.1.  Tìm kiếm không có thông tin (Uniformed Search)
 - Không gian trạng thái (State Space): Tập hợp tất cả trạng thái có thể sinh ra từ khởi đầu.
 - Trạng thái khởi đầu (Initial State): Ở bài toán này sẽ là bảng 8-puzzle [4, 1, 3], [7, 2, 5], [0, 8, 6].
 - Trạng thái đích (Goal State): Ở bài toán này sẽ là [1, 2, 3], [4, 5, 6], [7, 8, 0].
