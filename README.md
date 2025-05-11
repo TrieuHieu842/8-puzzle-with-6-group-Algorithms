@@ -136,6 +136,20 @@ Biểu đồ so sánh khi chạy thuật toán:
 + Nhược điểm: Cần huấn luyện qua nhiều lần chơi thử (episodes), tốn thời gian. Không đảm bảo tìm lời giải tối ưu ngay.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          
 #
 #
 #
@@ -145,7 +159,7 @@ Biểu đồ so sánh khi chạy thuật toán:
 #
 #
 # -------------------------------------------
-SVTH: Đặng Xuân Huyền
+SVTH: Triệu Phúc Hiếu
 
                                     
   
