@@ -115,6 +115,9 @@ Biểu đồ so sánh khi chạy thuật toán:
 **Nhận xét**
 - Backtracking: Khám phá số lượng trạng thái nhiều hơn nhưng lại có thời gian thực hiện nhanh nhất. Điều này cho thấy mặc dù thuật toán duyệt nhiều hướng hơn, nhưng không tốn nhiều thời gian xử lý mỗi trạng thái. Tuy nhiên, trong bài toán lớn hơn, cách tiếp cận này dễ gặp phải tình trạng phải quay lui nhiều lần, làm tăng chi phí tính toán.
 - Forward Checking: Khám phá ít trạng thái hơn, cho thấy khả năng cắt tỉa không gian trạng thái tốt hơn nhờ kiểm tra ràng buộc sớm. Tuy nhiên, thời gian thực hiện lại cao hơn, có thể do chi phí tính toán bổ sung cho việc kiểm tra trước mỗi bước gán giá trị. Điều này hợp lý về mặt lý thuyết, và hiệu quả hơn khi áp dụng cho các bài toán có không gian tìm kiếm lớn và ràng buộc phức tạp.
+
+
+  
 **Như vậy, hai phương pháp Backtracking và Forward Checking đều có đặc điểm riêng phù hợp với từng bài toán:
 Backtracking đơn giản, dễ triển khai, có thể nhanh trên bài toán nhỏ nhưng không hiệu quả trong không gian lớn. Forward Checking tuy có chi phí kiểm tra bổ sung nhưng giúp tiết kiệm không gian tìm kiếm và đặc biệt hiệu quả khi xử lý các bài toán CSP phức tạp với nhiều ràng buộc.**
 
