@@ -136,22 +136,11 @@ Biểu đồ so sánh khi chạy thuật toán:
 + Nhược điểm: Cần huấn luyện qua nhiều lần chơi thử (episodes), tốn thời gian. Không đảm bảo tìm lời giải tối ưu ngay.
 
 
-
-#
-#
-#
-#
-#
-#
-#
-#
 #
 #
 #
 #
 
-# -----------------------------------------
-SVTH: TRIEU PHUC HIEU
 
 
 
