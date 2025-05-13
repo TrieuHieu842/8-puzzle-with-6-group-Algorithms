@@ -323,13 +323,13 @@ def generate_random_state():
     random.shuffle(numbers)
     return [[numbers[i * 3 + j] for j in range(3)] for i in range(3)]
 
-# Thay thế hàm plot_comparison
 def plot_comparison(data):
-    import matplotlib.pyplot as plt  # Import trong hàm để đảm bảo thread an toàn
+    import matplotlib.pyplot as plt
     plt.switch_backend('Agg')  # Backend không giao diện
     algorithms = list(data.keys())
     runtimes = [data[algo]['runtime'] for algo in algorithms]
-    states = [data[algo]['states'] for algo in algorithms]
+    # Ensure states are scalars by extracting value if it's a list
+    states = [data[algo]['states'][0] if isinstance(data[algo]['states'], list) else data[algo]['states'] for algo in algorithms]
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
 
@@ -1026,8 +1026,8 @@ def backtracking_search(update_display_callback=None):
     used_values = set()
     path = [copy.deepcopy(state)]
     visited = set()
-    states_explored = [0]  # Sử dụng list để cập nhật trong hàm lồng
     max_depth = 50
+    states_explored = [0]  # Use a list to allow modification in nested function
 
     def state_to_string(s):
         return str([[val if val is not None else 'N' for val in row] for row in s])
@@ -1039,7 +1039,6 @@ def backtracking_search(update_display_callback=None):
             return None, path
 
         if pos_index == 9:
-            states_explored[0] += 1
             if current_state == trang_thai_dich:
                 path.append(copy.deepcopy(current_state))
                 return current_state, path
@@ -1053,7 +1052,7 @@ def backtracking_search(update_display_callback=None):
         if state_str in visited:
             return None, path
         visited.add(state_str)
-        states_explored[0] += 1
+        states_explored[0] += 1  # Increment when a new state is visited
 
         values = list(range(9))
         random.shuffle(values)
@@ -1106,17 +1105,88 @@ def forward_checking(start_state, update_display_callback=None):
 
     def is_solvable(state):
         if not is_complete_state(state):
-            return True  # Trạng thái chưa hoàn chỉnh, giả định có thể giải được
+            return True  # Cho phép trạng thái chưa hoàn chỉnh tiếp tục
         flat = [state[i][j] for i in range(3) for j in range(3) if state[i][j] != 0]
-        inversions = 0
-        for i in range(len(flat)):
-            for j in range(i + 1, len(flat)):
-                if flat[i] > flat[j]:
-                    inversions += 1
-        return inversions % 2 == 0  # Trạng thái khả nghiệm nếu số nghịch đảo là chẵn
+        inversions = sum(1 for i in range(len(flat)) for j in range(i+1, len(flat)) if flat[i] > flat[j])
+        return inversions % 2 == 0
 
-    def backtrack_with_fc(state, assigned, positions, domains, path, visited, states_explored_count, depth_limit=9):
-        if states_explored_count[0] > 1000 or time.time() - start_time > 10:
+    def state_to_string(state):
+        return ''.join(str(state[i][j] if state[i][j] is not None else 'N') for i in range(3) for j in range(3))
+
+    def is_valid_assignment(state, pos, value):
+        if not is_valid_state(state):
+            return False
+        i, j = pos
+        temp_state = [row[:] for row in state]
+        temp_state[i][j] = value
+        return is_valid_state(temp_state) and is_solvable(temp_state)
+
+    def get_domain(state, pos, assigned):
+        domain = []
+        for value in range(9):
+            if value not in assigned and is_valid_assignment(state, pos, value):
+                domain.append(value)
+        return domain
+
+    def forward_check(state, pos, value, domains, assigned):
+        new_domains = {k: v[:] for k, v in domains.items()}
+        used_values = set(state[r][c] for r in range(3) for c in range(3) if state[r][c] is not None)
+        related_positions = [(r, c) for r in range(3) for c in range(3) if
+                             (r, c) not in assigned and (r == pos[0] or c == pos[1])]
+        for other_pos in related_positions:
+            if other_pos != pos:
+                i, j = other_pos
+                new_domain = [val for val in new_domains[other_pos] if val not in used_values]
+                if pos == (0, 0) and value == 1:
+                    if other_pos == (0, 1):
+                        new_domain = [2]
+                    elif other_pos == (1, 0):
+                        new_domain = [4]
+                elif value != 0:
+                    if j > 0 and state[i][j - 1] is not None and state[i][j - 1] != 0:
+                        new_domain = [val for val in new_domain if val == 0 or state[i][j - 1] == val - 1]
+                    if j < 2 and state[i][j + 1] is not None and state[i][j + 1] != 0:
+                        new_domain = [val for val in new_domain if val == 0 or state[i][j + 1] == val + 1]
+                    if i > 0 and state[i - 1][j] is not None and state[i - 1][j] != 0:
+                        new_domain = [val for val in new_domain if val == 0 or state[i - 1][j] == val - 3]
+                    if i < 2 and state[i + 1][j] is not None and state[i + 1][j] != 0:
+                        new_domain = [val for val in new_domain if val == 0 or state[i + 1][j] == val + 3]
+                new_domains[other_pos] = new_domain
+                if not new_domain:
+                    return False, domains
+        return True, new_domains
+
+    def select_mrv_variable(positions, domains, state):
+        max_constraints = -1
+        selected_pos = None
+        for pos in positions:
+            i, j = pos
+            constraints = sum(1 for r, c in [(i, j - 1), (i, j + 1), (i - 1, j), (i + 1, j)] if
+                              0 <= r < 3 and 0 <= c < 3 and state[r][c] is not None)
+            domain_size = len(domains[pos])
+            if constraints > max_constraints or (constraints == max_constraints and domain_size < (
+                len(domains[selected_pos]) if selected_pos else float('inf'))):
+                max_constraints = constraints
+                selected_pos = pos
+        return selected_pos
+
+    def select_lcv_value(pos, domain, state, domains, assigned):
+        value_scores = []
+        goal_state = trang_thai_dich
+        for value in domain:
+            temp_state = [row[:] for row in state]
+            temp_state[pos[0]][pos[1]] = value
+            _, new_domains = forward_check(temp_state, pos, value, domains, assigned)
+            eliminated = sum(len(domains[p]) - len(new_domains[p]) for p in new_domains if p != pos)
+            if value == goal_state[pos[0]][pos[1]]:
+                eliminated -= 10
+            value_scores.append((eliminated, value))
+        value_scores.sort()
+        return [value for _, value in value_scores]
+
+    def backtrack_with_fc(state, assigned, positions, domains, path, visited, explored_states, depth_limit=9):
+        nonlocal states_explored_count
+        if states_explored_count > 1000 or time.time() - start_time > 10:
             return None
 
         if len(assigned) == 9 and is_complete_state(state):
@@ -1139,7 +1209,7 @@ def forward_checking(start_state, update_display_callback=None):
                 value = remaining_values[0]
                 temp_state[p[0]][p[1]] = value
                 temp_assigned[p] = value
-                path.append([row[:] for row in temp_state])
+                path.append([row[:] for row in temp_state])  # Lưu trạng thái trung gian
                 success, temp_domains = forward_check(temp_state, p, value, temp_domains, temp_assigned)
                 if not success:
                     path.pop()
@@ -1162,7 +1232,8 @@ def forward_checking(start_state, update_display_callback=None):
         if state_tuple in visited:
             return None
         visited.add(state_tuple)
-        states_explored_count[0] += 1
+        states_explored_count += 1
+        explored_states.append([row[:] for row in state])
 
         for value in sorted_values:
             new_state = [row[:] for row in state]
@@ -1170,12 +1241,12 @@ def forward_checking(start_state, update_display_callback=None):
             new_assigned = assigned.copy()
             new_assigned[pos] = value
             new_positions = [p for p in positions if p != pos]
-            path.append([row[:] for row in new_state])
+            path.append([row[:] for row in new_state])  # Lưu trạng thái trung gian
             if update_display_callback:
                 update_display_callback([row[:] for row in new_state], None, f"Assigning {value} to position {pos}")
             success, new_domains = forward_check(new_state, pos, value, domains, new_assigned)
             if success:
-                result = backtrack_with_fc(new_state, new_assigned, new_positions, new_domains, path, visited, states_explored_count, depth_limit)
+                result = backtrack_with_fc(new_state, new_assigned, new_positions, new_domains, path, visited, explored_states, depth_limit)
                 if result is not None:
                     return result
             path.pop()
@@ -1183,28 +1254,29 @@ def forward_checking(start_state, update_display_callback=None):
         return None
 
     start_time = time.time()
-    states_explored_count = [0]  # Sử dụng list để cập nhật
+    states_explored_count = 0
     empty_state = [[None for _ in range(3)] for _ in range(3)]
     positions = [(i, j) for i in range(3) for j in range(3)]
     domains = {(i, j): list(range(9)) for i in range(3) for j in range(3)}
     domains[(0, 0)] = [1]
     assigned = {}
     visited = set()
+    explored_states = []
     path = []
 
     if update_display_callback:
         update_display_callback(empty_state, None, "Starting Forward Checking from empty state")
 
-    result = backtrack_with_fc(empty_state, assigned, positions, domains, path, visited, states_explored_count)
+    result = backtrack_with_fc(empty_state, assigned, positions, domains, path, visited, explored_states)
 
     if result:
         if update_display_callback:
             update_display_callback(trang_thai_dich, None, "Forward Checking: Solution found")
-        return result, empty_state, states_explored_count[0]
+        return result, empty_state, states_explored_count
     else:
         if update_display_callback:
             update_display_callback(empty_state, None, "Forward Checking: No solution found")
-        return None, empty_state, states_explored_count[0]
+        return None, empty_state, states_explored_count
 
 
 # Hàm Min-Conflicts
@@ -1397,6 +1469,7 @@ def min_conflicts_algorithm(start_state, update_display_callback=None):
     return min_conflicts_search(start_state, update_display_callback=update_display_callback)
 
 
+# Hàm phụ trợ cho Q-learning
 def get_action_from_direction(dx, dy):
     """Chuyển đổi hướng di chuyển thành hành động (0: lên, 1: xuống, 2: phải, 3: trái)."""
     if dx == 0 and dy == -1:
